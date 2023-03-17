@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponseNotFound
 from . import util
 import markdown2
@@ -10,6 +10,10 @@ def index(request):
     })
 
 def entry(request, title):
+    '''    
+    Returns an HTML page for the requested entry if it exists.
+    Otherwise, an HTTP 404 Not Found error is returned. 
+    ''' 
     entry = util.get_entry(title)
     if entry != None:
         entry_html =  markdown2.markdown(entry)
@@ -21,4 +25,9 @@ def entry(request, title):
         return HttpResponseNotFound("The requested page was not found")
 
 def search(request):
-    return render(request, "encyclopedia/search.html")
+    search = request.GET.get("q")
+    entries = util.list_entries()
+
+    for entry in entries:
+        if search.lower() == entry.lower():
+            return redirect('entry', title=search)
