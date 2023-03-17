@@ -19,3 +19,6 @@ def entry(request, title):
         })
     else:
         return HttpResponseNotFound("The requested page was not found")
+
+def search(request):
+    return render(request, "encyclopedia/search.html")
