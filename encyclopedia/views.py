@@ -3,6 +3,7 @@ from django.http import HttpResponseNotFound
 from . import util
 import markdown2
 import re
+from .forms import NewEntryForm
 
 
 def index(request):
@@ -26,6 +27,11 @@ def entry(request, title):
         return HttpResponseNotFound("The requested page was not found")
 
 def search(request):
+    '''
+    Returns an HTML page for the searched entry if it exists.
+    If the query matches any substring of an existing entry 
+    (or entries) it returns a list of them. 
+    '''
     query = request.GET.get("q")
     entries = util.list_entries()
     matches = []
@@ -36,8 +42,28 @@ def search(request):
 
         if re.search(query.lower(), entry.lower()):
             matches.append(entry)
-            
+
     return render(request, "encyclopedia/search.html", {
             "query" : query,
             "matches" : matches
         })
+
+def newpage(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+     # create a form instance and populate it with data from the request:
+        form = NewEntryForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            title = form.cleaned_data["title"]
+            content = form.cleaned_data["content"]
+            return redirect('entry', title=title)
+    else:
+        form = NewEntryForm()
+
+    return render(request, 'encyclopedia/newpage.html', {
+        'form':form 
+        })
+
+
+    

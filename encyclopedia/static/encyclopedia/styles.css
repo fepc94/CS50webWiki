@@ -13,13 +13,14 @@ h1 {
 }
 
 textarea {
-    height: 90vh;
+    height: 1vh;
     width: 80%;
 }
 
 .main {
     padding: 10px;
-    max-width: fit-content;
+    max-width: 100%;
+    width: fit-content;
 }
 
 .search {
@@ -37,4 +38,21 @@ textarea {
 
 .sidebar h2 {
     margin-top: 5px;
+}
+
+#netitle{
+    max-width: 70%;  
+    min-width: fit-content;  
+    text-align: left;
+    height: 25px;
+    padding: 2px, 2px, 2px, 2px ;
+}
+
+#necontent{
+    max-width: 70%;  
+    min-width: 10%;  
+    text-align: left;
+    max-height: 300px;
+    min-height: 200px;
+    padding: 2px, 2px, 2px, 2px ;
 }
