@@ -56,3 +56,8 @@ textarea {
     min-height: 200px;
     padding: 2px, 2px, 2px, 2px ;
 }
+
+#nesubmmit{
+    margin-top: 1%;
+    text-align: right;
+}
