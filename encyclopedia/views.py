@@ -57,7 +57,13 @@ def newpage(request):
         if form.is_valid():
             title = form.cleaned_data["title"]
             content = form.cleaned_data["content"]
-            return redirect('entry', title=title)
+            
+            if util.get_entry(title) == None:
+                util.save_to_disk(title, content)
+                return redirect('entry', title=title)
+            else:
+                return HttpResponseNotFound("This entry already exists!") 
+
     else:
         form = NewEntryForm()
 

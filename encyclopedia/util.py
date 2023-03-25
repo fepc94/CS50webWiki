@@ -1,5 +1,5 @@
 import re
-
+import os
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 
@@ -35,3 +35,13 @@ def get_entry(title):
         return f.read().decode("utf-8")
     except FileNotFoundError:
         return None
+
+def save_to_disk(title, content):
+    """
+    Saves a new entry into the entries directory as a markdown file.
+    """
+
+    filename = os.path.join('entries' , f"{title}.md")
+    with open(filename, 'w') as file:
+        file.write(f"# {title}\n\n")
+        file.write(content)
