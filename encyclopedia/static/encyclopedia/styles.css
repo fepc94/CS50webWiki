@@ -20,7 +20,7 @@ textarea {
 .main {
     padding: 10px;
     max-width: 100%;
-    min-width: fit-content;
+    width: fit-content;
 }
 
 .search {
@@ -57,3 +57,7 @@ textarea {
     padding: 2px, 2px, 2px, 2px ;
 }
 
+#nesubmmit{
+    margin-top: 1%;
+    text-align: right;
+}
