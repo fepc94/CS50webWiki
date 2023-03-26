@@ -40,8 +40,31 @@ def save_to_disk(title, content):
     """
     Saves a new entry into the entries directory as a markdown file.
     """
-
     filename = os.path.join('entries' , f"{title}.md")
     with open(filename, 'w') as file:
         file.write(f"# {title}\n\n")
         file.write(content)
+
+def retrieve_entry(title):
+    """
+    Retrieves the actual content to the form before editing it.
+    """
+    try:
+        entry_path = os.path.join('entries', f"{title}.md")
+        with open(entry_path, "r") as file:
+            content = file.read()
+            return content 
+    except FileNotFoundError():
+        return None
+
+def update_entry(title, updated_title, updated_content):
+    """ 
+    Updates the entry once edited. 
+    """
+    old_entry_path = os.path.join('entries', f"{title}.md")
+    new_entry_path = os.path.join('entries', f"{updated_title}.md")
+    if os.path.exists(old_entry_path):
+        os.rename(old_entry_path, new_entry_path)
+        with open(new_entry_path, "w") as file:
+            file.write(updated_content)
+    return None

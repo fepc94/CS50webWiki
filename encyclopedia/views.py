@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseNotFound
 from . import util
+from .forms import NewEntryForm
 import markdown2
 import re
-from .forms import NewEntryForm
+import random
 
 
 def index(request):
@@ -71,5 +72,31 @@ def newpage(request):
         'form':form 
         })
 
+def edit(request, title):
+    # Retrieve the data from your storage mechanism based on the entry that needs to be edited.
+    content = util.retrieve_entry(title)
 
-    
+    # Create a form instance and pass in the retrieved data as the initial data for the form.
+    form = NewEntryForm(initial={'title': title, 'content': content})
+
+    if request.method == 'POST':
+        # If the request method is POST, validate the form data and update the entry in your storage mechanism.
+        form = NewEntryForm(request.POST)
+        if form.is_valid():
+            updated_title = form.cleaned_data['title']
+            updated_content = form.cleaned_data['content']
+            util.update_entry(title, updated_title, updated_content)
+            return redirect('entry', title=updated_title)
+
+    # Render the form in your template with the initial data populated in the form fields.
+    return render(request, 'encyclopedia/edit.html', {
+        'title' : title,
+        'form': form
+        })
+
+def randomize(request):
+    """
+    Renders a rondom entry via entry funcion.
+    """
+    title = lambda : random.choice(util.list_entries())
+    return redirect('entry', title=title())

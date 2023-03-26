@@ -1,0 +1,3 @@
+# Apple
+
+**[Apple Inc.](https://www.apple.com)** is an American multinational technology company headquartered in Cupertino, California. Apple is the largest technology company by revenue, totaling US$394.3 billion in 2022. As of March 2023, Apple is the world's biggest company by market capitalization. As of June 2022, Apple is the fourth-largest personal computer vendor by unit sales and second-largest mobile phone manufacturer. It is one of the Big Five American information technology companies, alongside Alphabet (known for Google), Amazon, Meta (known for Facebook), and Microsoft.

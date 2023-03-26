@@ -1,3 +1,3 @@
 # Gustavo Cerati
 
-**Gustavo [Cerati](http://www.cerati.com/)** Was a great Argentinian musician.
+**[Gustavo Cerati](http://www.cerati.com/)** Was a great Argentinian musician.
