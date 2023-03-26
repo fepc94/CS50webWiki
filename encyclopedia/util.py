@@ -40,7 +40,6 @@ def save_to_disk(title, content):
     """
     Saves a new entry into the entries directory as a markdown file.
     """
-
     filename = os.path.join('entries' , f"{title}.md")
     with open(filename, 'w') as file:
         file.write(f"# {title}\n\n")
@@ -69,4 +68,3 @@ def update_entry(title, updated_title, updated_content):
         with open(new_entry_path, "w") as file:
             file.write(updated_content)
     return None
-        

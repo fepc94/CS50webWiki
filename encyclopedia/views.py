@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseNotFound
 from . import util
+from .forms import NewEntryForm
 import markdown2
 import re
-from .forms import NewEntryForm
+import random
 
 
 def index(request):
@@ -92,3 +93,10 @@ def edit(request, title):
         'title' : title,
         'form': form
         })
+
+def randomize(request):
+    """
+    Renders a rondom entry via entry funcion.
+    """
+    title = lambda : random.choice(util.list_entries())
+    return redirect('entry', title=title())
