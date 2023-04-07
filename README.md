@@ -4,7 +4,7 @@
 
 This is my implemantation of Project1 - Wiki - from CS50 Web Programming course. 
 
-Wiki is a web-based application that allows users to create, edit, and view articles. Inspired by Wikipedia, this project aims to provide users with an easy-to-use platform for sharing information and collaborating on articles with markdown support.
+Wiki is a web-based application that allows users to create, edit, and view articles. Inspired by Wikipedia, this project aims to provide users with an easy-to-use platform for sharing information and collaborating on articles with Markdown support.
 
 The technologies used in this project are Django for the backend, HTML for the structure, and CSS for styling.
 
